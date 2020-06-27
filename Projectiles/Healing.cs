@@ -16,12 +16,26 @@ namespace HealerClass.Projectiles
             targetPos = target;
         }
 
-        public void VampireHeal(int Damage, Vector2 Position)
+        public override void SetDefaults()
         {
-            float num = (float)dmg * 0.075f;
-            if ((int)num != 0 && !(Main.player[Main.myPlayer].lifeSteal <= 0f))
+            projectile.CloneDefaults(304);
+        }
+
+        public static void VampireHeal(int Damage, Vector2 Position)
+        {
+            float num = (float)Damage;
+            if ((int)num != 0 && !Main.player[Main.myPlayer].moonLeech)
             {
-                Main.player[Main.myPlayer].lifeSteal -= num;
+                int num2 = 255;
+                NewProjectile(Position.X, Position.Y, 0f, 0f, 305, 0, 0f, 255, num2, num);
+            }
+        }
+
+        public static void VampireHealIgnoreMoon(int Damage, Vector2 Position)
+        {
+            float num = (float)Damage;
+            if ((int)num != 0)
+            {
                 int num2 = 255;
                 NewProjectile(Position.X, Position.Y, 0f, 0f, 305, 0, 0f, 255, num2, num);
             }

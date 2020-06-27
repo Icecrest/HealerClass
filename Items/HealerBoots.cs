@@ -20,7 +20,7 @@ namespace HealerClass.Items
             item.height = 18;
             item.maxStack = 1;
             item.value = 100;
-            item.rare = ItemRarityID.Green;
+            item.rare = -13;
         }
 
         public override void UpdateEquip(Terraria.Player player)
@@ -30,21 +30,21 @@ namespace HealerClass.Items
         }
 
         public override void AddRecipes()
-        {
-            ModRecipe recipeIron = new ModRecipe(mod);
-            recipeIron.AddIngredient(ItemID.MeteoriteBar, 15);
-            recipeIron.AddIngredient(ItemID.Silk, 10);
-            recipeIron.AddIngredient(ItemID.IronBar, 10);
-            recipeIron.AddTile(TileID.Anvils);
-            recipeIron.SetResult(this);
+            {
+                ModRecipe recipeIron = new ModRecipe(mod);
+                recipeIron.AddIngredient(ItemID.MeteoriteBar, 15);
+                recipeIron.AddIngredient(ItemID.Silk, 10);
+                recipeIron.AddIngredient(ItemID.IronBar, 10);
+                recipeIron.AddTile(TileID.Anvils);
+                recipeIron.SetResult(this);
 
-            ModRecipe recipeLead = new ModRecipe(mod);
-            recipeLead.AddIngredient(ItemID.MeteoriteBar, 15);
-            recipeLead.AddIngredient(ItemID.Silk, 10);
-            recipeLead.AddIngredient(ItemID.LeadBar, 10);
-            recipeLead.AddTile(TileID.Anvils);
-            recipeLead.SetResult(this);
-        }
+                ModRecipe recipeLead = new ModRecipe(mod);
+                recipeLead.AddIngredient(ItemID.MeteoriteBar, 15);
+                recipeLead.AddIngredient(ItemID.Silk, 10);
+                recipeLead.AddIngredient(ItemID.LeadBar, 10);
+                recipeLead.AddTile(TileID.Anvils);
+                recipeLead.SetResult(this);
+            }
 
 
     }
