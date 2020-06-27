@@ -1,7 +1,10 @@
 ﻿using HealerClass.Items;
 using HealerClass.Projectiles;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
+using static Microsoft.Xna.Framework.Color;
 
 namespace HealerClass
 {
@@ -10,10 +13,10 @@ namespace HealerClass
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
         {
-            if(player.armor[2].legSlot.Equals(ModContent.ItemType<HealerBoots>()))
-            {
-                Projectile.NewProjectile(target.position.X, target.position.Y, 0f, 0f, ModContent.ProjectileType<Healing>(), 255, 255, damage);
-            }
+            
+            Projectile.NewProjectile(target.position.X, target.position.Y, 0f, 0f, ModContent.ProjectileType<Healing>(), 255, 255, damage);
+            
+            Main.NewText("Hit!", Color.DarkRed, true);
         }
 
     }
