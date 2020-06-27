@@ -1,0 +1,3 @@
+displayName = Healer Class
+author = Icecrest
+version = 0.1
