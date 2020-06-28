@@ -1,3 +1,5 @@
 displayName = Healer Class
 author = Icecrest
-version = 0.1
+hideCode = true
+buildIgnore = *.csproj
+version = 0.1b
