@@ -18,45 +18,36 @@ namespace HealerClass
 
         private float healMod = 0f;
         private int healValue = 0;
-        private Item[] equipArmor = Main.player[Main.myPlayer].armor;
 
-
-        public float PlayerHasArmourEquippedOfType(int pieceType)
+        public bool PlayerHasArmourEquippedOfType(int pieceType, Projectile proj)
         {
             for (int i = 0; i < 3; i++)
             {
-                Item item = equipArmor[i];
+                Item item = Main.player[proj.owner].armor[i];
                 if (item != null && !item.IsAir && item.type == pieceType)
                 {
-                    return 0.5f;
+                    return true;
                 }
             }
-            return 0f;
+            return false;
         }
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
         {
-            testString.Append("Hit! ");
-            testString.Append("\n Damage: " + damage.ToString());
-
-            // Trouble Code:  && PlayerHasArmourEquippedOfType(ArmorIDs.Body.NebulaBreastplate) == 0.5f
-            if (proj.magic == true)
+            Main.NewText(Main.player[proj.owner].armor[1]);
+            Main.NewText(proj.magic);
+            if (proj.magic == true && PlayerHasArmourEquippedOfType(2761, proj) == true)
             {
                 healMod = 0.5f;
 
                 healValue = (int)Math.Floor((float)damage * healMod);
 
                 Healing.VampireHeal(damage, target.position);
-                Main.player[Main.myPlayer].statLife += healValue;
-                Main.player[Main.myPlayer].HealEffect(healValue);
-                testString.Append(" Healing: " + ((float)damage * healMod).ToString() + " Actual: " + healValue.ToString());
+                Main.player[proj.owner].statLife += healValue;
+                Main.player[proj.owner].HealEffect(healValue);
+
+                Main.NewText("Healing Should Have Triggered...");
             }
-
-            
-
-            Main.NewTextMultiline(testString.ToString(), true, Microsoft.Xna.Framework.Color.DarkCyan);
-            testString.Clear();
         }
-
     }
 }
